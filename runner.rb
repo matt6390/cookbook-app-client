@@ -6,6 +6,8 @@ puts "Welcome to my Cookbook App"
 puts "make a selection"
 puts "    [1] See all recipes"
 puts "       -[1.1] Search all recipes"
+puts "       -[1.1] Sort Recipes by Chef"
+puts "       -[1.3] Sort Recipes by Prep Time"
 puts "    [2] See one recipe"
 puts "    [3] Create a new recipe"
 puts "    [4] Update a recipe"
@@ -25,6 +27,23 @@ elsif input_option == "1.1"
   response = Unirest.get("http://localhost:3000/recipes?search=#{search_term}")
   products = response.body
   puts JSON.pretty_generate(products)
+
+elsif input_option == "1.2"
+  response = Unirest.get("http://localhost:3000/recipes?sort=chef")
+  products = response.body
+  puts JSON.pretty_generate(products)
+
+elsif input_option == "1.3"
+  response = Unirest.get("http://localhost:3000/recipes?sort=prep_time")
+  products = response.body
+  puts JSON.pretty_generate(products)
+
+
+
+
+
+
+
 
 elsif input_option == "2"
   print "Enter recipe id: "
